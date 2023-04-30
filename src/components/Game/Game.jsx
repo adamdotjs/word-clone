@@ -4,7 +4,7 @@ import { WORDS } from "../../data";
 import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults/GuessResults";
 import { checkGuess } from "../../game-helpers";
-import Keyboard from "../Keyboard/Keyboard";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -43,7 +43,7 @@ function Game() {
 						<strong>Congratulations!</strong> Got it in <strong>{guesses.length} guesses</strong>.
 					</p>
 				</div>
-			) : guesses.length === 6 ? (
+			) : guesses.length >= NUM_OF_GUESSES_ALLOWED ? (
 				<div className="sad banner">
 					<p>
 						Sorry, the correct answer is <strong>{answer}</strong>.
